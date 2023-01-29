@@ -6,7 +6,6 @@ function getAllStudents(req: Request, res: Response): void {
 }
 
 function createNewStudent(req: Request, res: Response): void {
-
   // Assign `req.body` as a `NewStudentRequest`
   const studentData = req.body as NewStudentRequest;
 
@@ -21,12 +20,24 @@ function createNewStudent(req: Request, res: Response): void {
     return;
   }
 
-  // Send status 201 (This means 201 Created)
-  res.sendStatus(201);
+  let weights = 0;
+
+  for (const assignment of studentData.weights.assignmentWeights) {
+    weights += assignment.weight;
+  }
+
+  weights += studentData.weights.finalExamWeight.weight;
+
+  if (weights !== 100) {
+    // weights don't sum to 100
+    res.sendStatus(400);
+  } else {
+    // Send status 201 (This means 201 Created)
+    res.sendStatus(201);
+  }
 }
 
 function getStudentByName(req: Request, res: Response): void {
-
   // Assign `req.params` as a `StudentNameParams`
   const { studentName } = req.params as StudentNameParams;
 

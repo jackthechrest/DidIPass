@@ -1,4 +1,3 @@
-
 type CourseGrades = {
   assignmentWeights: Array<CourseGrade>;
   finalExamWeight: {
