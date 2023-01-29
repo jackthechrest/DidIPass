@@ -13,6 +13,8 @@ app.use(express.json());
 const PORT = 8191
 
 // Register your route handlers for the specified endpoints
+app.post('/student', StudentController.createNewStudent);
+app.get('/student', StudentController.getStudentByName);
 
 
 // Start listening on the chosen port
