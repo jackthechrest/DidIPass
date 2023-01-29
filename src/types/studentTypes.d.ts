@@ -1,14 +1,14 @@
+type CourseGrade = {
+  name: string;
+  weight: number;
+  grade: number;
+};
+
 type CourseGrades = {
   assignmentWeights: Array<CourseGrade>;
   finalExamWeight: {
     weight: number;
   };
-};
-
-type CourseGrade = {
-  name: string;
-  weight: number;
-  grade: number;
 };
 
 type Student = {
