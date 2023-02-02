@@ -26,6 +26,8 @@ type StudentNameParams = {
   studentName: string;
 };
 
+type StudentManager = Record<string, Student>;
+
 type AssignmentGrade = {
   grade: number;
 };

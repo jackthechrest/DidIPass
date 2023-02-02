@@ -1,3 +1,11 @@
+/*
+ *   index.ts
+ *   Project: Did I Pass? Part 1
+ *
+ *   Author: Jack Chrestman
+ *   Created on: Jan 28, 2023
+ */
+
 // Import express
 import express, { Express } from 'express';
 
@@ -6,14 +14,12 @@ import StudentController from './controllers/StudentController';
 
 // Create your app object
 const app: Express = express();
+const PORT = 8191;
 
 // Activate json parsing for the request body
 app.use(express.json());
 
-const PORT = 8191;
-
 // Register your route handlers for the specified endpoints
-
 app.post('/api/students', StudentController.createNewStudent);
 app.get('/api/students/:studentName', StudentController.getStudentByName);
 

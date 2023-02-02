@@ -16,10 +16,10 @@ function createNewStudent(req: Request, res: Response): void {
   if (!didAddStudent) {
     // Responds with status 409 (This means 409 Conflict)
     res.sendStatus(409);
-    // return from the function
     return;
   }
 
+  // make sure weights sum to 100
   let weights = 0;
 
   for (const assignment of studentData.weights.assignmentWeights) {
@@ -29,12 +29,12 @@ function createNewStudent(req: Request, res: Response): void {
   weights += studentData.weights.finalExamWeight.weight;
 
   if (weights !== 100) {
-    // weights don't sum to 100
+    // weights don't sum to 100, send 400 Bad Request
     res.sendStatus(400);
-  } else {
-    // Send status 201 (This means 201 Created)
-    res.sendStatus(201);
+    return;
   }
+  // Send status 201 (This means 201 Created)
+  res.sendStatus(201);
 }
 
 function getStudentByName(req: Request, res: Response): void {
