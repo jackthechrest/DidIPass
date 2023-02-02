@@ -38,10 +38,8 @@ function addStudent(newStudentData: NewStudentRequest): boolean {
 
 function getStudent(studentName: string): Student | undefined {
   // Search for student name in students
-  // If the student's name is not in `students`
-  if (!(studentName in students))
-    // exit
-    return undefined;
+  // If the student's name is not in `students`, exit
+  if (!(studentName in students)) return undefined;
 
   // Return the student's information (their name is the key for `students`)
   return students[studentName];

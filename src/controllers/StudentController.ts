@@ -9,16 +9,6 @@ function createNewStudent(req: Request, res: Response): void {
   // Assign `req.body` as a `NewStudentRequest`
   const studentData = req.body as NewStudentRequest;
 
-  // Call the `addStudent` function using the student's data
-  const didAddStudent = addStudent(studentData);
-
-  // If the student's data was not added successfully
-  if (!didAddStudent) {
-    // Responds with status 409 (This means 409 Conflict)
-    res.sendStatus(409);
-    return;
-  }
-
   // make sure weights sum to 100
   let weights = 0;
 
@@ -33,6 +23,17 @@ function createNewStudent(req: Request, res: Response): void {
     res.sendStatus(400);
     return;
   }
+
+  // Call the `addStudent` function using the student's data
+  const didAddStudent = addStudent(studentData);
+
+  // If the student's data was not added successfully
+  if (!didAddStudent) {
+    // Responds with status 409 (This means 409 Conflict)
+    res.sendStatus(409);
+    return;
+  }
+
   // Send status 201 (This means 201 Created)
   res.sendStatus(201);
 }
@@ -48,7 +49,6 @@ function getStudentByName(req: Request, res: Response): void {
   if (!student) {
     // respond with status 404 (Which means 404 Not Found)
     res.sendStatus(404);
-    // return immediately
     return;
   }
 
