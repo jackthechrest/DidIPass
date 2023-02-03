@@ -6,9 +6,7 @@ type CourseGrade = {
 
 type CourseGrades = {
   assignmentWeights: Array<CourseGrade>;
-  finalExamWeight: {
-    weight: number;
-  };
+  finalExamWeight: number;
 };
 
 type Student = {

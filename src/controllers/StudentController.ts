@@ -16,7 +16,7 @@ function createNewStudent(req: Request, res: Response): void {
     weights += assignment.weight;
   }
 
-  weights += studentData.weights.finalExamWeight.weight;
+  weights += studentData.weights.finalExamWeight;
 
   if (weights !== 100) {
     // weights don't sum to 100, send 400 Bad Request
