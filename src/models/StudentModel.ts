@@ -45,4 +45,54 @@ function getStudent(studentName: string): Student | undefined {
   return students[studentName];
 }
 
-export { students, addStudent, getStudent };
+function calculateFinalExamScore(
+  currentAverage: number,
+  finalExamWeight: number,
+  targetScore: number
+): number {
+  // Calculate the final exam score needed to get the targetScore in the class
+  let requiredScore = (targetScore - (currentAverage * (100 - finalExamWeight))) / finalExamWeight;
+
+  return requiredScore;
+}
+
+function getLetterGrade(score: number): string {
+  // Return the appropriate letter grade
+  if (score >= 90)
+    return 'A';
+
+  if (score >= 80)
+    return 'B';
+
+  if (score >= 70)
+    return 'C';
+
+  if (score >= 60)
+    return 'D';
+
+  return 'F';
+}
+
+function updateStudentGrade( studentName: string, assignmentName: string, newGrade: number): boolean {
+  // TODO: Get the student name from the path params
+
+
+  // TODO: Get the student's data from the dataset
+
+  // TODO: If the student was not found
+    // TODO: return false
+
+  const assignment = // TODO: Search the student's `assignmentWeights` and find the assignment with the matching name using the .find() method
+
+  // TODO: If the assignment was not found
+    // TODO: return false
+
+  // TODO: Set the assignment's grade to the newGrade
+
+  student.currentAverage = // TODO: Then recalculate the student's currentAverage
+
+  // TODO: return true since the update completed successfully
+}
+
+
+export { students, addStudent, getStudent, calculateFinalExamScore, getLetterGrade, updateStudentGrade };
