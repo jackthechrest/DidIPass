@@ -125,13 +125,24 @@ function calcFinalScore(req: Request, res: Response): void {
 }
 
 function updateGrade(req: Request, res: Response): void {
-  // TODO: Get the student's name and assignment name from the path parameters as a `GradeUpdateParams`
-  // TODO: Get the grade from the request body as an `AssignmentGrade`
-  // TODO: Update the student's grade
-  // TODO: If the update did not complete (this means the student or the assignment wasn't found)
-  // TODO: respond with status 404 Not Found
-  // TODO: terminate the function immediately
-  // TODO: Respond with status 200 OK
+  // Get the student's name and assignment name from the path parameters as a `GradeUpdateParams`
+  const { studentName, assignmentName } = req.params as GradeUpdateParams;
+
+  // Get the grade from the request body as an `AssignmentGrade`
+  const { grade } = req.body as AssignmentGrade;
+
+  // Update the student's grade
+  const updated = updateStudentGrade(studentName, assignmentName, grade);
+
+  // If the update did not complete (this means the student or the assignment wasn't found)
+  if (!updated) {
+    // respond with status 404 Not Found, terminate the function immediately
+    res.sendStatus(404);
+    return;
+  }
+
+  // Respond with status 200 OK
+  res.sendStatus(200);
 }
 
 export default {
