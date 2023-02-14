@@ -114,7 +114,8 @@ function calcFinalScore(req: Request, res: Response): void {
   const finalWeight = student.weights.finalExamWeight;
 
   // Calculate the final score that would receive using their current average and the hypothetical final exam grade.
-  const overallScore = average * (100 - finalWeight) + examGrade.grade * finalWeight;
+  const overallScore =
+    average * ((100 - finalWeight) / 100) + examGrade.grade * (finalWeight / 100);
   // Get the letter grade they would receive given this score
   const letterGrade = getLetterGrade(overallScore);
 
